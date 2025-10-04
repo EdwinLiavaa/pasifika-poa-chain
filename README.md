@@ -8,7 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![Pasifika Web3 Tech Hub](./assets/pasifika-banner.png)
+![Pasifika Web3 Tech Hub](./pasifika.png)
 
 **[Quick Start](./docs/QUICKSTART.md)** | 
 **[Documentation](./docs/INDEX.md)** | 
@@ -205,11 +205,11 @@ const landRegistry = await deployContract("LandRegistry");
 
 // Register land with customary ownership
 await landRegistry.registerLand({
-  plotId: "SAMOA-001",
+  plotId: "TONGA-001",
   owner: "0x...",
-  area: "5.2 hectares",
+  area: "260.5 km²",
   customaryRights: true,
-  village: "Apia"
+  village: "Tongatapu"
 });
 
 // Cost: 0 ETH (zero gas fees!)
@@ -221,7 +221,7 @@ await landRegistry.registerLand({
 // Create a community savings pool
 const savingsPool = await deployContract("CommunitySavings");
 
-// Members contribute (like traditional fa'alavelave)
+// Members contribute (like traditional kavenga)
 await savingsPool.contribute({ amount: 100 });
 
 // Transparent, auditable, zero fees
@@ -233,7 +233,7 @@ await savingsPool.contribute({ amount: 100 });
 The Pasifika Platform is built by and for Pacific communities. We welcome participation from:
 
 ### Island Nations & Communities
-- Samoa, Tonga, Fiji, Cook Islands, Niue
+- Tonga, Fiji, Samoa Cook Islands, Niue
 - Papua New Guinea, Solomon Islands, Vanuatu
 - Kiribati, Tuvalu, Nauru
 - Palau, Marshall Islands, Micronesia
@@ -374,25 +374,15 @@ For security concerns or to report vulnerabilities, please contact: security@pas
 - Multi-node networking
 - Comprehensive documentation
 
-### Phase 2: Community Tools (Q2 2025)
-- Block explorer for community transparency
-- Governance smart contracts
-- Mobile wallet application
-- Multi-language support (Samoan, Tongan, Fijian, etc.)
-- Community training program
+### Phase 2: Real-World Pilots (Q4 2025)
+- DePIN-GIS (Federated States of Micronesia)
+- MEIDECC Decision Support Performance Indicator System(Tonga)
+- Tonga Postal Traciability Service (Tonga)
 
-### Phase 3: Real-World Pilots (Q3-Q4 2025)
-- Land registry pilot (Samoa)
-- Microfinance implementation (Tonga)
-- Supply chain tracking (Fiji)
-- Digital identity system (Cook Islands)
-- Community governance (Multiple nations)
-
-### Phase 4: Regional Scale (2026)
-- Inter-island connectivity
+### Phase 3: Regional Scale (2026)
+- Inter island connectivity
 - Regional economic zone
-- Cross-border remittances
-- Pan-Pacific governance framework
+- Cross border remittances
 - Integration with national systems
 
 ## Contributing
@@ -415,26 +405,13 @@ We welcome contributions from everyone! Here's how you can help:
 - Help translate to Pacific languages
 - Organize community workshops
 
-## Getting Help
-
-### Documentation
-- [Complete Documentation Index](./docs/INDEX.md)
-- [FAQ](#) - Frequently asked questions
-- [Troubleshooting Guide](./docs/BUILD_AND_RUN.md#troubleshooting)
-
-### Community Support
-- **Email**: support@pasifika-web3.org
-- **Community Forum**: [forum.pasifika-web3.org](#)
-- **GitHub Issues**: For bug reports and feature requests
-- **Discord**: [Join our community](#)
-
 ### Professional Services
 For organizations needing dedicated support:
 - Custom deployment assistance
 - Training and workshops
 - Smart contract development
 - Integration services
-- Contact: enterprise@pasifika-web3.org
+- Contact: info@pasifika.xyz
 
 ## Acknowledgements
 
