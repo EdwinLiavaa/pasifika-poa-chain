@@ -1,0 +1,121 @@
+name: Pasifika Data Chain CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build Pasifika Data Chain
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+        override: true
+        
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential clang libclang-dev pkg-config libssl-dev
+        
+    - name: Cache cargo registry
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/registry
+        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+        
+    - name: Cache cargo index
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/git
+        key: ${{ runner.os }}-cargo-git-${{ hashFiles('**/Cargo.lock') }}
+        
+    - name: Cache target directory
+      uses: actions/cache@v3
+      with:
+        path: target
+        key: ${{ runner.os }}-target-${{ hashFiles('**/Cargo.lock') }}
+        
+    - name: Build Reth
+      run: cargo build --release --bin reth
+      
+    - name: Verify binary
+      run: |
+        ./target/release/reth --version
+        echo "✅ Pasifika Data Chain build successful"
+        
+  documentation:
+    name: Check Documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check documentation files
+      run: |
+        echo "Checking documentation..."
+        test -f docs/QUICKSTART.md || exit 1
+        test -f docs/BUILD_AND_RUN.md || exit 1
+        test -f docs/NON_FINANCIAL_BLOCKCHAIN.md || exit 1
+        test -f README.md || exit 1
+        echo "✅ All documentation files present"
+        
+    - name: Check scripts
+      run: |
+        echo "Checking scripts..."
+        test -x quick-test.sh || exit 1
+        test -x run-node.sh || exit 1
+        test -x test-rpc.sh || exit 1
+        echo "✅ All scripts present and executable"
+        
+  genesis-validation:
+    name: Validate Genesis Configuration
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install jq
+      run: sudo apt-get install -y jq
+      
+    - name: Validate genesis.json
+      run: |
+        echo "Validating genesis configuration..."
+        jq . pasifika-poa/genesis.json > /dev/null
+        
+        # Check chain ID
+        CHAIN_ID=$(jq -r '.config.chainId' pasifika-poa/genesis.json)
+        if [ "$CHAIN_ID" != "999888" ]; then
+          echo "❌ Chain ID mismatch: expected 999888, got $CHAIN_ID"
+          exit 1
+        fi
+        echo "✅ Chain ID: $CHAIN_ID"
+        
+        # Check base fee (should be 0 for zero gas)
+        BASE_FEE=$(jq -r '.baseFeePerGas' pasifika-poa/genesis.json)
+        if [ "$BASE_FEE" != "0x0" ]; then
+          echo "⚠️  Base fee is not 0x0: $BASE_FEE"
+        else
+          echo "✅ Base fee: $BASE_FEE (zero gas)"
+        fi
+        
+        # Check account balances (should be 0 for non-financial)
+        FIRST_BALANCE=$(jq -r '.alloc | to_entries | .[0].value.balance' pasifika-poa/genesis.json)
+        if [ "$FIRST_BALANCE" != "0x0" ]; then
+          echo "⚠️  Account balance is not 0x0: $FIRST_BALANCE (financial blockchain)"
+        else
+          echo "✅ Account balances: 0x0 (non-financial blockchain)"
+        fi
+        
+        echo "✅ Genesis configuration validated"
