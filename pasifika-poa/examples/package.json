@@ -1,0 +1,12 @@
+{
+  "name": "pasifika-poa-examples",
+  "version": "1.0.0",
+  "description": "JavaScript examples for Pasifika PoA Chain",
+  "scripts": {
+    "deploy": "node deploy-contract.js",
+    "send": "node send-transaction.js"
+  },
+  "dependencies": {
+    "ethers": "^6.9.0"
+  }
+}

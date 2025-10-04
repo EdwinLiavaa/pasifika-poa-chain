@@ -1,149 +1,481 @@
-# reth
+# Pasifika Data Chain - Non-Financial Blockchain
 
-[![bench status](https://github.com/paradigmxyz/reth/actions/workflows/bench.yml/badge.svg)](https://github.com/paradigmxyz/reth/actions/workflows/bench.yml)
-[![CI status](https://github.com/paradigmxyz/reth/workflows/unit/badge.svg)][gh-ci]
-[![cargo-lint status](https://github.com/paradigmxyz/reth/actions/workflows/lint.yml/badge.svg)][gh-lint]
-[![Telegram Chat][tg-badge]][tg-url]
+**A Community Record-Keeping and Verification Platform**
 
-**Modular, contributor-friendly and blazing-fast implementation of the Ethereum protocol**
+**IMPORTANT: This is NOT about money or cryptocurrency**  
+**This IS about**: Records, data, verification, and governance - completely FREE
 
-![](./assets/reth-prod.png)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-**[Install](https://paradigmxyz.github.io/reth/installation/installation.html)**
-| [User Docs](https://reth.rs)
-| [Developer Docs](./docs)
-| [Crate Docs](https://reth.rs/docs)
+![Pasifika Web3 Tech Hub](./assets/pasifika-banner.png)
 
-[gh-ci]: https://github.com/paradigmxyz/reth/actions/workflows/unit.yml
-[gh-lint]: https://github.com/paradigmxyz/reth/actions/workflows/lint.yml
-[tg-badge]: https://img.shields.io/endpoint?color=neon&logo=telegram&label=chat&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fparadigm%5Freth
+**[Quick Start](./docs/QUICKSTART.md)** | 
+**[Documentation](./docs/INDEX.md)** | 
+**[Build Guide](./docs/BUILD_AND_RUN.md)** | 
+**[Community](#community)**
 
-## What is Reth?
+---
 
-Reth (short for Rust Ethereum, [pronunciation](https://x.com/kelvinfichter/status/1597653609411268608)) is a new Ethereum full node implementation that is focused on being user-friendly, highly modular, as well as being fast and efficient. Reth is an Execution Layer (EL) and is compatible with all Ethereum Consensus Layer (CL) implementations that support the [Engine API](https://github.com/ethereum/execution-apis/tree/a0d03086564ab1838b462befbc083f873dcf0c0f/src/engine). It is originally built and driven forward by [Paradigm](https://paradigm.xyz/), and is licensed under the Apache and MIT licenses.
+## Our Vision
 
-## Goals
+The **Pasifika Data Chain** is a community-driven initiative to bring blockchain technology to Pacific Islander communities **for record-keeping and verification - NOT for money or payments**. Built for and by the people of the Pacific, this platform provides the infrastructure for:
 
-As a full Ethereum node, Reth allows users to connect to the Ethereum network and interact with the Ethereum blockchain. This includes sending and receiving transactions/logs/traces, as well as accessing and interacting with smart contracts. Building a successful Ethereum node requires creating a high-quality implementation that is both secure and efficient, as well as being easy to use on consumer hardware. It also requires building a strong community of contributors who can help support and improve the software.
+- **Community Records** - Land, identity, credentials
+- **Data Verification** - Authentic documents and certificates  
+- **Governance** - Community voting and decisions
+- **Registries** - Births, marriages, assets (not financial)
+- **Immutable Ledger** - Permanent, unchangeable records
 
-More concretely, our goals are:
+### Core Principles
 
-1. **Modularity**: Every component of Reth is built to be used as a library: well-tested, heavily documented and benchmarked. We envision that developers will import the node's crates, mix and match, and innovate on top of them. Examples of such usage include but are not limited to spinning up standalone P2P networks, talking directly to a node's database, or "unbundling" the node into the components you need. To achieve that, we are licensing Reth under the Apache/MIT permissive license. You can learn more about the project's components [here](./docs/repo/layout.md).
-2. **Performance**: Reth aims to be fast, so we use Rust and the [Erigon staged-sync](https://erigon.substack.com/p/erigon-stage-sync-and-control-flows) node architecture. We also use our Ethereum libraries (including [Alloy](https://github.com/alloy-rs/alloy/) and [revm](https://github.com/bluealloy/revm/)) which we've battle-tested and optimized via [Foundry](https://github.com/foundry-rs/foundry/).
-3. **Free for anyone to use any way they want**: Reth is free open source software, built for the community, by the community. By licensing the software under the Apache/MIT license, we want developers to use it without being bound by business licenses, or having to think about the implications of GPL-like licenses.
-4. **Client Diversity**: The Ethereum protocol becomes more antifragile when no node implementation dominates. This ensures that if there's a software bug, the network does not finalize a bad block. By building a new client, we hope to contribute to Ethereum's antifragility.
-5. **Support as many EVM chains as possible**: We aspire that Reth can full-sync not only Ethereum, but also other chains like Optimism, Polygon, BNB Smart Chain, and more. If you're working on any of these projects, please reach out.
-6. **Configurability**: We want to solve for node operators that care about fast historical queries, but also for hobbyists who cannot operate on large hardware. We also want to support teams and individuals who want both sync from genesis and via "fast sync". We envision that Reth will be configurable enough and provide configurable "profiles" for the tradeoffs that each team faces.
+- **NOT Financial** - This is not about money, currency, or payments
+- **100% Free** - Zero transaction costs, no fees ever
+- **Data-Focused** - Records, verification, and governance only
+- **Community-Owned** - Governed by those who use it
+- **Culturally Relevant** - Built for Pacific values and traditions
+- **Accessible** - Simple to use, no technical barriers
 
-## Status
+## What is the Pasifika PoA Platform?
 
-Reth is production ready, and suitable for usage in mission-critical environments such as staking or high-uptime services. We also actively recommend professional node operators to switch to Reth in production for performance and cost reasons in use cases where high performance with great margins is required such as RPC, MEV, Indexing, Simulations, and P2P activities.
+The Pasifika Platform is a **Proof-of-Authority blockchain** specifically designed for private and consortium networks in the Pacific region. Unlike public blockchains, our platform enables:
 
-More historical context below:
+### Key Features
 
--   We released 1.0 "production-ready" stable Reth in June 2024.
-    -   Reth completed an audit with [Sigma Prime](https://sigmaprime.io/), the developers of [Lighthouse](https://github.com/sigp/lighthouse), the Rust Consensus Layer implementation. Find it [here](./audit/sigma_prime_audit_v2.pdf).
-    -   Revm (the EVM used in Reth) underwent an audit with [Guido Vranken](https://x.com/guidovranken) (#1 [Ethereum Bug Bounty](https://ethereum.org/en/bug-bounty)). We will publish the results soon.
--   We released multiple iterative beta versions, up to [beta.9](https://github.com/paradigmxyz/reth/releases/tag/v0.2.0-beta.9) on Monday June 3, 2024,the last beta release.
--   We released [beta](https://github.com/paradigmxyz/reth/releases/tag/v0.2.0-beta.1) on Monday March 4, 2024, our first breaking change to the database model, providing faster query speed, smaller database footprint, and allowing "history" to be mounted on separate drives.
--   We shipped iterative improvements until the last alpha release on February 28, 2024, [0.1.0-alpha.21](https://github.com/paradigmxyz/reth/releases/tag/v0.1.0-alpha.21).
--   We [initially announced](https://www.paradigm.xyz/2023/06/reth-alpha) [0.1.0-alpha.1](https://github.com/paradigmxyz/reth/releases/tag/v0.1.0-alpha.1) on June 20, 2023.
+- **Community Governance** - All participating organizations validate transactions
+- **Zero Transaction Costs** - No gas fees, making blockchain accessible to everyone
+- **Democratic Participation** - Every node automatically becomes a validator
+- **Privacy & Control** - Keep sensitive community data within the network
+- **Full EVM Compatibility** - Use existing Ethereum tools and smart contracts
+- **High Performance** - Fast transaction processing for real-world applications
 
-### Database compatibility
+### Use Cases for Pacific Communities
 
-We do not have any breaking database changes since beta.1, and we do not plan any in the near future.
+1. **Community Resource Management**
+   - Track and manage shared resources (land, water, fisheries)
+   - Transparent allocation and usage records
+   - Community voting on resource distribution
 
-Reth [v0.2.0-beta.1](https://github.com/paradigmxyz/reth/releases/tag/v0.2.0-beta.1) includes
-a [set of breaking database changes](https://github.com/paradigmxyz/reth/pull/5191) that makes it impossible to use database files produced by earlier versions.
+2. **Digital Identity & Records**
+   - Birth certificates and vital records
+   - Educational credentials
+   - Professional certifications
+   - Land ownership records
 
-If you had a database produced by alpha versions of Reth, you need to drop it with `reth db drop`
-(using the same arguments such as `--config` or `--datadir` that you passed to `reth node`), and resync using the same `reth node` command you've used before.
+3. **Microfinance & Community Banking**
+   - Transparent lending pools
+   - Savings groups (similar to traditional faletalimalo)
+   - Remittance tracking
+   - Community investment funds
 
-## For Users
+4. **Supply Chain Transparency**
+   - Track locally-produced goods
+   - Fair trade verification
+   - Artisan and craft provenance
+   - Agricultural product tracking
 
-See the [Reth documentation](https://reth.rs/) for instructions on how to install and run Reth.
+5. **Governance & Voting**
+   - Community decision-making
+   - Transparent budget allocation
+   - Project proposal and approval
+   - Traditional council integration
 
-## For Developers
+## Technical Foundation
 
-### Using reth as a library
+While our platform is purpose-built for Pasifika communities, it's built on solid technical foundations:
 
-You can use individual crates of reth in your project.
+- **Based on Reth** - Production-ready Ethereum implementation in Rust
+- **Custom Consensus** - Proof-of-Authority designed for trusted community networks
+- **Zero Gas Architecture** - Transactions cost 0, removing economic barriers
+- **Automatic Validators** - Democratic participation without technical barriers
+- **Standard APIs** - Compatible with all Ethereum development tools
 
-The crate docs can be found [here](https://reth.rs/docs/).
+### Why Proof-of-Authority?
 
-For a general overview of the crates, see [Project Layout](./docs/repo/layout.md).
+Traditional blockchain consensus mechanisms (Proof-of-Work, Proof-of-Stake) are designed for trustless environments with economic incentives. **Pacific communities operate differently:**
 
-### Contributing
+- **Trust is fundamental** - Communities know and trust their members
+- **Collective benefit** - Focus on community good over individual profit
+- **Inclusive participation** - Everyone should be able to validate, not just the wealthy
+- **Zero barriers** - No need for expensive mining equipment or large token holdings
 
-If you want to contribute, or follow along with contributor discussion, you can use our [main telegram](https://t.me/paradigm_reth) to chat with us about the development of Reth!
+## Getting Started
 
--   Our contributor guidelines can be found in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
--   See our [contributor docs](./docs) for more information on the project. A good starting point is [Project Layout](./docs/repo/layout.md).
+### Prerequisites (Must Install First)
 
-### Building and testing
+Before building, install these required dependencies:
 
-<!--
-When updating this, also update:
-- Cargo.toml
-- .github/workflows/lint.yml
--->
-
-The Minimum Supported Rust Version (MSRV) of this project is [1.88.0](https://blog.rust-lang.org/2025/06/26/Rust-1.88.0/).
-
-See the docs for detailed instructions on how to [build from source](https://reth.rs/installation/source/).
-
-To fully test Reth, you will need to have [Geth installed](https://geth.ethereum.org/docs/getting-started/installing-geth), but it is possible to run a subset of tests without Geth.
-
-First, clone the repository:
-
-```sh
-git clone https://github.com/paradigmxyz/reth
-cd reth
+**1. Rust 1.88.0 or later:**
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update stable  # CRITICAL: Must be 1.88+
 ```
 
-Next, run the tests:
+**2. Clang/LLVM (required for database engine):**
+```bash
+# Ubuntu/Debian
+sudo apt-get install -y build-essential clang libclang-dev pkg-config libssl-dev
 
-```sh
-cargo nextest run --workspace
-
-# Run the Ethereum Foundation tests
-make ef-tests
+# macOS
+xcode-select --install
 ```
 
-We highly recommend using [`cargo nextest`](https://nexte.st/) to speed up testing.
-Using `cargo test` to run tests may work fine, but this is not tested and does not support more advanced features like retries for spurious failures.
+### Quick Setup
 
-> **Note**
->
-> Some tests use random number generators to generate test data. If you want to use a deterministic seed, you can set the `SEED` environment variable.
+```bash
+# Navigate to project root
+cd /home/user/Documents/pasifika-web3-tech-hub/pasifika-poa-chain
+
+# Build Reth (10-15 minutes first time)
+cargo build --release --bin reth
+
+# Initialize Pasifika chain
+./quick-test.sh
+
+# Start node (Terminal 1)
+./run-node.sh
+
+# Test (Terminal 2)
+./test-rpc.sh
+```
+
+**📚 Complete guides:**
+- [Quick Start Guide](./docs/QUICKSTART.md) - Step-by-step setup with all prerequisites
+- [Build & Run Guide](./docs/BUILD_AND_RUN.md) - Detailed instructions & troubleshooting
+- [Setup Summary](./docs/SETUP_SUMMARY.md) - Complete tested process summary
+- [Configuration Guide](./docs/CONFIG.md) - Customize for your community
+
+## Platform Architecture
+
+```
+Pasifika PoA Network
+├── Community Node 1 (Validator)
+├── Community Node 2 (Validator)  
+├── Community Node 3 (Validator)
+└── ... (All connected nodes validate)
+
+Features:
+- Automatic validator registration
+- Zero transaction costs
+- Democratic consensus
+- Full EVM compatibility
+- Privacy-preserving
+```
+
+### Network Specifications
+
+| Feature | Value |
+|---------|-------|
+| **Consensus** | Proof-of-Authority |
+| **Chain ID** | 999888 (customizable) |
+| **Block Time** | ~1 second |
+| **Transaction Cost** | 0 (zero gas fees) |
+| **Validator Model** | All nodes validate |
+| **Smart Contracts** | Full Solidity/Vyper support |
+| **Network Type** | Private/Consortium |
+
+## Documentation
+
+### For Community Leaders & Organizers
+
+- [Platform Overview](./docs/README.md) - Understand the platform
+- [Use Case Guide](./docs/PROJECT_SUMMARY.md) - Real-world applications
+- [Governance Guide](#) - How to manage your community network
+
+### For Developers
+
+- [Quick Start](./docs/QUICKSTART.md) - Get started in 5 minutes
+- [Build Guide](./docs/BUILD_AND_RUN.md) - Detailed setup instructions
+- [Implementation Details](./docs/IMPLEMENTATION.md) - Technical deep-dive
+- [API Reference](#) - Smart contract development
+
+### For Node Operators
+
+- [Installation Guide](./docs/BUILD_AND_RUN.md) - Set up a node
+- [Configuration Guide](./docs/CONFIG.md) - Customize your node
+- [Security Best Practices](./docs/IMPLEMENTATION.md#security-model) - Secure your deployment
+
+## Real-World Examples
+
+### Example 1: Community Land Registry
+
+```javascript
+// Track land ownership on the blockchain
+const landRegistry = await deployContract("LandRegistry");
+
+// Register land with customary ownership
+await landRegistry.registerLand({
+  plotId: "SAMOA-001",
+  owner: "0x...",
+  area: "5.2 hectares",
+  customaryRights: true,
+  village: "Apia"
+});
+
+// Cost: 0 ETH (zero gas fees!)
+```
+
+### Example 2: Microfinance Pool
+
+```javascript
+// Create a community savings pool
+const savingsPool = await deployContract("CommunitySavings");
+
+// Members contribute (like traditional fa'alavelave)
+await savingsPool.contribute({ amount: 100 });
+
+// Transparent, auditable, zero fees
+// All transactions recorded on-chain
+```
+
+## Community & Collaboration
+
+The Pasifika Platform is built by and for Pacific communities. We welcome participation from:
+
+### Island Nations & Communities
+- Samoa, Tonga, Fiji, Cook Islands, Niue
+- Papua New Guinea, Solomon Islands, Vanuatu
+- Kiribati, Tuvalu, Nauru
+- Palau, Marshall Islands, Micronesia
+- Polynesian, Melanesian, and Micronesian diaspora communities worldwide
+
+### Partner Organizations
+- **Community Leaders** - Bring your governance experience
+- **NGOs & Development Organizations** - Deploy solutions for your communities
+- **Educational Institutions** - Research and teach blockchain technology
+- **Local Governments** - Pilot digital governance initiatives
+- **Cooperatives & Credit Unions** - Implement transparent financial services
+
+### Contributors Welcome
+
+We need help from people with diverse skills:
+- **Developers** - Rust, Solidity, JavaScript, DevOps
+- **Translators** - Help us support Pacific languages
+- **Designers** - Create accessible, culturally relevant UIs
+- **Educators** - Develop training materials
+- **Community Managers** - Build local adoption
+- **Documentation Writers** - Improve our guides
+
+## Building & Development
+
+### Prerequisites
+
+```bash
+# Install Rust (required)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Minimum Rust version: 1.88.0
+rustc --version
+```
+
+### Build from Source
+
+```bash
+# Clone the repository
+git clone https://github.com/pasifika-web3-tech-hub/pasifika-poa-chain
+cd pasifika-poa-chain/pasifika-poa
+
+# Build the platform
+cargo build --release
+
+# Run tests
+cargo test
+
+# Start a development node
+./scripts/start-node1.sh
+```
+
+### Running Tests
+
+```bash
+# Run all tests
+cargo test
+
+# Run with detailed output
+cargo test -- --nocapture
+
+# Test specific modules
+cargo test consensus
+cargo test p2p
+cargo test genesis
+```
+
+## Deployment Options
+
+### Local Development
+Perfect for learning and testing:
+```bash
+./scripts/start-node1.sh
+```
+
+### Community Network (3-5 Nodes)
+For village or organization deployment:
+```bash
+# Node 1 (Bootstrap)
+./scripts/start-node1.sh
+
+# Node 2 (on another machine)
+./scripts/start-node2.sh
+
+# Node 3 (on another machine)
+./scripts/start-node3.sh
+```
+
+### Docker Deployment
+For containerized environments:
+```bash
+# Single node
+docker-compose up node1
+
+# Full network
+docker-compose up
+```
+
+### Production Deployment
+For regional or national networks:
+- See [Production Deployment Guide](./docs/CONFIG.md)
+- Contact us for enterprise support
+
+## Learning Resources
+
+### Beginner-Friendly Guides
+- [What is Blockchain?](#) - Introduction for non-technical users
+- [Quick Start Guide](./docs/QUICKSTART.md) - Get running in 5 minutes
+- [Video Tutorials](#) - Step-by-step visual guides
+
+### Developer Resources
+- [Smart Contract Examples](./pasifika-poa/examples/) - Real-world use cases
+- [API Documentation](./docs/IMPLEMENTATION.md) - Technical reference
+- [Development Tools](#) - SDKs and libraries
+
+### Community Resources
+- [Use Case Library](#) - How other communities are using the platform
+- [Best Practices](#) - Governance and operational guides
+- [Community Forum](#) - Ask questions and share experiences
+
+## Security & Privacy
+
+The Pasifika Platform is designed with community privacy in mind:
+
+- **Private Network** - Only authorized nodes can join
+- **Data Sovereignty** - Communities control their own data
+- **Encryption** - All network traffic is encrypted
+- **Access Control** - Fine-grained permissions for sensitive data
+- **Audit Trails** - Transparent, immutable transaction history
+
+For security concerns or to report vulnerabilities, please contact: security@pasifika-web3.org
+
+## Roadmap
+
+### Phase 1: Foundation (Current)
+- Core PoA blockchain platform
+- Zero gas architecture
+- Automatic validator registration
+- Multi-node networking
+- Comprehensive documentation
+
+### Phase 2: Community Tools (Q2 2025)
+- Block explorer for community transparency
+- Governance smart contracts
+- Mobile wallet application
+- Multi-language support (Samoan, Tongan, Fijian, etc.)
+- Community training program
+
+### Phase 3: Real-World Pilots (Q3-Q4 2025)
+- Land registry pilot (Samoa)
+- Microfinance implementation (Tonga)
+- Supply chain tracking (Fiji)
+- Digital identity system (Cook Islands)
+- Community governance (Multiple nations)
+
+### Phase 4: Regional Scale (2026)
+- Inter-island connectivity
+- Regional economic zone
+- Cross-border remittances
+- Pan-Pacific governance framework
+- Integration with national systems
+
+## Contributing
+
+We welcome contributions from everyone! Here's how you can help:
+
+### Code Contributions
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Add tests if applicable
+5. Commit your changes (`git commit -m 'Add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+### Non-Code Contributions
+- Report bugs or suggest features via [GitHub Issues](./issues)
+- Improve documentation
+- Share use cases from your community
+- Help translate to Pacific languages
+- Organize community workshops
 
 ## Getting Help
 
-If you have any questions, first see if the answer to your question can be found in the [docs][book].
+### Documentation
+- [Complete Documentation Index](./docs/INDEX.md)
+- [FAQ](#) - Frequently asked questions
+- [Troubleshooting Guide](./docs/BUILD_AND_RUN.md#troubleshooting)
 
-If the answer is not there:
+### Community Support
+- **Email**: support@pasifika-web3.org
+- **Community Forum**: [forum.pasifika-web3.org](#)
+- **GitHub Issues**: For bug reports and feature requests
+- **Discord**: [Join our community](#)
 
--   Join the [Telegram][tg-url] to get help, or
--   Open a [discussion](https://github.com/paradigmxyz/reth/discussions/new) with your question, or
--   Open an issue with [the bug](https://github.com/paradigmxyz/reth/issues/new?assignees=&labels=C-bug%2CS-needs-triage&projects=&template=bug.yml)
-
-## Security
-
-See [`SECURITY.md`](./SECURITY.md).
+### Professional Services
+For organizations needing dedicated support:
+- Custom deployment assistance
+- Training and workshops
+- Smart contract development
+- Integration services
+- Contact: enterprise@pasifika-web3.org
 
 ## Acknowledgements
 
-Reth is a new implementation of the Ethereum protocol. In the process of developing the node we investigated the design decisions other nodes have made to understand what is done well, what is not, and where we can improve the status quo.
+The Pasifika Platform builds on the shoulders of giants:
 
-None of this would have been possible without them, so big shoutout to the teams below:
+### Technical Foundation
+- **Reth** - For providing a robust Ethereum implementation in Rust
+- **Ethereum Community** - For pioneering smart contract technology
+- **Rust Community** - For excellent tooling and libraries
 
--   [Geth](https://github.com/ethereum/go-ethereum/): We would like to express our heartfelt gratitude to the go-ethereum team for their outstanding contributions to Ethereum over the years. Their tireless efforts and dedication have helped to shape the Ethereum ecosystem and make it the vibrant and innovative community it is today. Thank you for your hard work and commitment to the project.
--   [Erigon](https://github.com/ledgerwatch/erigon) (fka Turbo-Geth): Erigon pioneered the ["Staged Sync" architecture](https://erigon.substack.com/p/erigon-stage-sync-and-control-flows) that Reth is using, as well as [introduced MDBX](https://github.com/ledgerwatch/erigon/wiki/Choice-of-storage-engine) as the database of choice. We thank Erigon for pushing the state of the art research on the performance limits of Ethereum nodes.
--   [Akula](https://github.com/akula-bft/akula/): Reth uses forks of the Apache versions of Akula's [MDBX Bindings](https://github.com/paradigmxyz/reth/pull/132), [FastRLP](https://github.com/paradigmxyz/reth/pull/63) and [ECIES](https://github.com/paradigmxyz/reth/pull/80). Given that these packages were already released under the Apache License, and they implement standardized solutions, we decided not to reimplement them to iterate faster. We thank the Akula team for their contributions to the Rust Ethereum ecosystem and for publishing these packages.
+### Inspiration & Support
+- **Pacific Island Communities** - For trusting us with this vision
+- **Open Source Contributors** - For making this possible
+- **Web3 Foundation** - For supporting decentralized technologies
+- **Community Leaders** - For guiding our development with real-world needs
 
-## Warning
+### Special Thanks
+To all the elders, community leaders, and visionaries across the Pacific who see the potential of blockchain technology to preserve our cultures, empower our people, and secure our futures.
 
-The `NippyJar` and `Compact` encoding formats and their implementations are designed for storing and retrieving data internally. They are not hardened to safely read potentially malicious data.
+## License
 
-[book]: https://reth.rs/
-[tg-url]: https://t.me/paradigm_reth
+This project is dual-licensed under:
+- MIT License ([LICENSE-MIT](./LICENSE-MIT))
+- Apache License 2.0 ([LICENSE-APACHE](./LICENSE-APACHE))
+
+You may choose either license for your use.
+
+## About Pasifika Web3 Tech Hub
+
+The Pasifika Web3 Tech Hub is a community driven initiative to bring Web3 technology to Pacific Island nations. Our mission is to empower Pacific communities through:
+
+- **Digital sovereignty** - Control over community data and identity
+- **Economic empowerment** - Access to global digital economy
+- **Cultural preservation** - Blockchain based cultural heritage records
+- **Education** - Training the next generation of Pacific technologists
+- **Innovation** - Supporting Pacific entrepreneurs and developers
+
+**Website**: https://pasifika.xyz 
+**GitHub**: https://github.com/Pasifika-Web3-Tech-Hub 
+**Email**: info@pasifika.xyz 
+
+---
+
+*Empowering communities through technology, honoring tradition through innovation*

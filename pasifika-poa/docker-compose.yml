@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  node1:
+    build:
+      context: ../
+      dockerfile: pasifika-poa/Dockerfile
+    container_name: pasifika-node1
+    ports:
+      - "8545:8545"
+      - "30303:30303"
+    volumes:
+      - node1-data:/data
+    command: >
+      --node-id node1
+      --http-port 8545
+      --p2p-port 30303
+      --dev
+    networks:
+      - pasifika-network
+
+  node2:
+    build:
+      context: ../
+      dockerfile: pasifika-poa/Dockerfile
+    container_name: pasifika-node2
+    ports:
+      - "8546:8545"
+      - "30304:30303"
+    volumes:
+      - node2-data:/data
+    command: >
+      --node-id node2
+      --http-port 8545
+      --p2p-port 30303
+      --dev
+    depends_on:
+      - node1
+    networks:
+      - pasifika-network
+
+  node3:
+    build:
+      context: ../
+      dockerfile: pasifika-poa/Dockerfile
+    container_name: pasifika-node3
+    ports:
+      - "8547:8545"
+      - "30305:30303"
+    volumes:
+      - node3-data:/data
+    command: >
+      --node-id node3
+      --http-port 8545
+      --p2p-port 30303
+      --dev
+    depends_on:
+      - node1
+    networks:
+      - pasifika-network
+
+volumes:
+  node1-data:
+  node2-data:
+  node3-data:
+
+networks:
+  pasifika-network:
+    driver: bridge
