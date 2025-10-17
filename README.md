@@ -141,12 +141,6 @@ cargo build --release --bin reth
 ./test-rpc.sh
 ```
 
-**📚 Complete guides:**
-- [Quick Start Guide](./docs/QUICKSTART.md) - Step-by-step setup with all prerequisites
-- [Build & Run Guide](./docs/BUILD_AND_RUN.md) - Detailed instructions & troubleshooting
-- [Setup Summary](./docs/SETUP_SUMMARY.md) - Complete tested process summary
-- [Configuration Guide](./docs/CONFIG.md) - Customize for your community
-
 ## Platform Architecture
 
 ```
@@ -176,26 +170,6 @@ Features:
 | **Smart Contracts** | Full Solidity/Vyper support |
 | **Network Type** | Private/Consortium |
 
-## Documentation
-
-### For Community Leaders & Organizers
-
-- [Platform Overview](./docs/README.md) - Understand the platform
-- [Use Case Guide](./docs/PROJECT_SUMMARY.md) - Real-world applications
-- [Governance Guide](#) - How to manage your community network
-
-### For Developers
-
-- [Quick Start](./docs/QUICKSTART.md) - Get started in 5 minutes
-- [Build Guide](./docs/BUILD_AND_RUN.md) - Detailed setup instructions
-- [Implementation Details](./docs/IMPLEMENTATION.md) - Technical deep-dive
-- [API Reference](#) - Smart contract development
-
-### For Node Operators
-
-- [Installation Guide](./docs/BUILD_AND_RUN.md) - Set up a node
-- [Configuration Guide](./docs/CONFIG.md) - Customize your node
-- [Security Best Practices](./docs/IMPLEMENTATION.md#security-model) - Secure your deployment
 
 ## Real-World Examples
 
@@ -216,37 +190,13 @@ await landRegistry.registerLand({
 
 // Cost: 0 ETH (zero gas fees!)
 ```
-
-### Example 2: Microfinance Pool
-
-```javascript
-// Create a community savings pool
-const savingsPool = await deployContract("CommunitySavings");
-
-// Members contribute (like traditional kavenga)
-await savingsPool.contribute({ amount: 100 });
-
-// Transparent, auditable, zero fees
-// All transactions recorded on-chain
-```
-
 ## Community & Collaboration
 
 The Pasifika Platform is built by and for Pacific communities. We welcome participation from:
 
 ### Island Nations & Communities
-- Tonga, Fiji, Samoa Cook Islands, Niue
-- Papua New Guinea, Solomon Islands, Vanuatu
-- Kiribati, Tuvalu, Nauru
-- Palau, Marshall Islands, Micronesia
-- Polynesian, Melanesian, and Micronesian diaspora communities worldwide
 
-### Partner Organizations
-- **Community Leaders** - Bring your governance experience
-- **NGOs & Development Organizations** - Deploy solutions for your communities
-- **Educational Institutions** - Research and teach blockchain technology
-- **Local Governments** - Pilot digital governance initiatives
-- **Cooperatives & Credit Unions** - Implement transparent financial services
+- Polynesian, Melanesian, and Micronesian diaspora communities worldwide
 
 ### Contributors Welcome
 
@@ -332,29 +282,6 @@ docker-compose up node1
 # Full network
 docker-compose up
 ```
-
-### Production Deployment
-For regional or national networks:
-- See [Production Deployment Guide](./docs/CONFIG.md)
-- Contact us for enterprise support
-
-## Learning Resources
-
-### Beginner-Friendly Guides
-- [What is Blockchain?](#) - Introduction for non-technical users
-- [Quick Start Guide](./docs/QUICKSTART.md) - Get running in 5 minutes
-- [Video Tutorials](#) - Step-by-step visual guides
-
-### Developer Resources
-- [Smart Contract Examples](./pasifika-poa/examples/) - Real-world use cases
-- [API Documentation](./docs/IMPLEMENTATION.md) - Technical reference
-- [Development Tools](#) - SDKs and libraries
-
-### Community Resources
-- [Use Case Library](#) - How other communities are using the platform
-- [Best Practices](#) - Governance and operational guides
-- [Community Forum](#) - Ask questions and share experiences
-
 ## Security & Privacy
 
 The Pasifika Platform is designed with community privacy in mind:
@@ -364,8 +291,6 @@ The Pasifika Platform is designed with community privacy in mind:
 - **Encryption** - All network traffic is encrypted
 - **Access Control** - Fine-grained permissions for sensitive data
 - **Audit Trails** - Transparent, immutable transaction history
-
-For security concerns or to report vulnerabilities, please contact: security@pasifika-web3.org
 
 ## Roadmap
 
@@ -377,43 +302,13 @@ For security concerns or to report vulnerabilities, please contact: security@pas
 - Comprehensive documentation
 
 ### Phase 2: Real-World Pilots (Q4 2025)
-- DePIN-GIS (Federated States of Micronesia)
-- MEIDECC Decision Support Performance Indicator System(Tonga)
+- Utilities DePIN GIS (Federated States of Micronesia)
 - Tonga Postal Traciability Service (Tonga)
+- MEIDECC Decision Support Performance Indicator System(Tonga)
 
-### Phase 3: Regional Scale (2026)
+### Phase 3: Inter Island Connectivity (2026)
 - Inter island connectivity
-- Regional economic zone
-- Cross border remittances
 - Integration with national systems
-
-## Contributing
-
-We welcome contributions from everyone! Here's how you can help:
-
-### Code Contributions
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Add tests if applicable
-5. Commit your changes (`git commit -m 'Add amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
-
-### Non-Code Contributions
-- Report bugs or suggest features via [GitHub Issues](./issues)
-- Improve documentation
-- Share use cases from your community
-- Help translate to Pacific languages
-- Organize community workshops
-
-### Professional Services
-For organizations needing dedicated support:
-- Custom deployment assistance
-- Training and workshops
-- Smart contract development
-- Integration services
-- Contact: info@pasifika.xyz
 
 ## Acknowledgements
 
@@ -428,10 +323,7 @@ The Pasifika Platform builds on the shoulders of giants:
 - **Pacific Island Communities** - For trusting us with this vision
 - **Open Source Contributors** - For making this possible
 - **Web3 Foundation** - For supporting decentralized technologies
-- **Community Leaders** - For guiding our development with real-world needs
-
-### Special Thanks
-To all the elders, community leaders, and visionaries across the Pacific who see the potential of blockchain technology to preserve our cultures, empower our people, and secure our futures.
+- **Community Leaders** - For guiding our development with real world needs
 
 ## License
 
