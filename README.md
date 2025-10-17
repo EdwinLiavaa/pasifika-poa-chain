@@ -1,6 +1,6 @@
 # Pasifika Data Chain - Non-Financial Blockchain
 
-**A Community Record-Keeping and Verification Platform**
+**A Community Record Keeping and Verification Platform**
 
 **IMPORTANT: This is NOT about money or cryptocurrency**  
 **This IS about**: Records, data, verification, and governance - completely FREE
