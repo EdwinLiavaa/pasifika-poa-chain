@@ -10,7 +10,7 @@
 
 ![Pasifika Web3 Tech Hub](./pasifika.png)
 
-**[Whitepaper](https://github.com/EdwinLiavaa/Whitepaper)**
+📄 **Learn more about our vision and technical approach in the [Whitepaper](https://github.com/EdwinLiavaa/Whitepaper)**
 
 ---
 
