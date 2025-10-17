@@ -5,6 +5,8 @@
 **IMPORTANT: This is NOT about money or cryptocurrency**  
 **This IS about**: Records, data, verification, and governance - completely FREE
 
+> **⚠️ INTERNAL REPOSITORY**: Pasifika PoA Data Chain is specifically designed for **Private Consortium Blockchains**. This repository is internal and access is restricted to participating organizations. Interested parties should contact us at **info@pasifika.xyz** for collaboration opportunities.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![CI](https://github.com/Pasifika-Web3-Tech-Hub/pasifika-poa-chain/actions/workflows/pasifika-ci.yml/badge.svg)](https://github.com/Pasifika-Web3-Tech-Hub/pasifika-poa-chain/actions/workflows/pasifika-ci.yml)
@@ -333,6 +335,34 @@ This project is dual-licensed under:
 - Apache License 2.0 ([LICENSE-APACHE](./LICENSE-APACHE))
 
 You may choose either license for your use.
+
+## Collaboration & Access
+
+**Pasifika PoA Data Chain** is designed for **Private Consortium Blockchains** and is intended for trusted organizations and communities in the Pacific region.
+
+### Who Should Join?
+
+- **Government Agencies** - Implementing digital services and e-governance
+- **Utilities Providers** - Managing infrastructure for power, water, telecommunications
+- **Healthcare Organizations** - Secure medical records and service coordination
+- **Educational Institutions** - Digital credentials and learning management
+- **Community Organizations** - Land registries, identity systems, governance
+- **Postal Services** - Package tracking and delivery verification
+
+### How to Get Involved
+
+This repository is **internal** and access is granted to participating consortium members. If your organization is interested in:
+
+- Joining the Pasifika Data Chain consortium
+- Implementing the platform for your community
+- Participating in pilot programs
+- Learning more about private consortium blockchains
+
+**Please contact us:**
+- **Email**: info@pasifika.xyz
+- **Website**: https://pasifika.xyz
+
+We welcome inquiries from Pacific Island organizations committed to digital transformation while preserving community values and data sovereignty.
 
 ## About Pasifika Web3 Tech Hub
 
