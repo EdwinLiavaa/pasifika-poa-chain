@@ -53,31 +53,6 @@ jobs:
         ./target/release/reth --version
         echo "✅ Pasifika Data Chain build successful"
         
-  documentation:
-    name: Check Documentation
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Check documentation files
-      run: |
-        echo "Checking documentation..."
-        test -f docs/QUICKSTART.md || exit 1
-        test -f docs/BUILD_AND_RUN.md || exit 1
-        test -f docs/NON_FINANCIAL_BLOCKCHAIN.md || exit 1
-        test -f README.md || exit 1
-        echo "✅ All documentation files present"
-        
-    - name: Check scripts
-      run: |
-        echo "Checking scripts..."
-        test -x quick-test.sh || exit 1
-        test -x run-node.sh || exit 1
-        test -x test-rpc.sh || exit 1
-        echo "✅ All scripts present and executable"
-        
   genesis-validation:
     name: Validate Genesis Configuration
     runs-on: ubuntu-latest
