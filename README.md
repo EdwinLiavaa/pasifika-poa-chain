@@ -7,9 +7,11 @@
 
 > **⚠️ INTERNAL REPOSITORY**: Pasifika PoA Data Chain is specifically designed for **Private Consortium Blockchains**. This repository is internal and access is restricted to participating organizations. Interested parties should contact us at **info@pasifika.xyz** for collaboration opportunities.
 
+<p align="center">
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![CI](https://github.com/Pasifika-Web3-Tech-Hub/pasifika-poa-chain/actions/workflows/pasifika-ci.yml/badge.svg)](https://github.com/Pasifika-Web3-Tech-Hub/pasifika-poa-chain/actions/workflows/pasifika-ci.yml)
+[![CI](https://github.com/Pasifika-Web3-Tech-Hub/pasifika-poa-chain/actions/workflows/pasifika-ci.yml/badge.svg)]
+</p>
 
 <p align="center">
   <img src="./pasifika.png" alt="Pasifika Web3 Tech Hub" width="500">
