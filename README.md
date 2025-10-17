@@ -10,22 +10,24 @@
 
 ![Pasifika Web3 Tech Hub](./pasifika.png)
 
-**[Quick Start](./docs/QUICKSTART.md)** | 
-**[Documentation](./docs/INDEX.md)** | 
-**[Build Guide](./docs/BUILD_AND_RUN.md)** | 
-**[Community](#community)**
+**[Whitepaper](https://github.com/EdwinLiavaa/Whitepaper)**
 
 ---
 
 ## Our Vision
 
-The **Pasifika Data Chain** is a community-driven initiative to bring blockchain technology to Pacific Islander communities **for record-keeping and verification - NOT for money or payments**. Built for and by the people of the Pacific, this platform provides the infrastructure for:
+The **Pasifika Data Chain** is a community driven initiative to bring blockchain technology to Pacific Islander communities **for record-keeping and verification - NOT for money or payments**. Built for and by the people of the Pacific, this platform provides the infrastructure for:
 
 - **Community Records** - Land, identity, credentials
 - **Data Verification** - Authentic documents and certificates  
 - **Governance** - Community voting and decisions
 - **Registries** - Births, marriages, assets (not financial)
 - **Immutable Ledger** - Permanent, unchangeable records
+- **Utilities Infrastructure** - Power, Water, and Telecommunication management
+- **Postal Service** - Package tracking and delivery verification
+- **Health** - Medical records and healthcare service coordination
+- **e-Governance** - Digital government services and citizen engagement
+- **Education** - Academic credentials and learning management systems
 
 ### Core Principles
 
