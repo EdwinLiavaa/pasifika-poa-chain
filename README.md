@@ -304,7 +304,7 @@ The Pasifika Platform is designed with community privacy in mind:
 ### Phase 2: Real-World Pilots (Q4 2025)
 - Utilities DePIN GIS (Federated States of Micronesia)
 - Tonga Postal Traciability Service (Tonga)
-- MEIDECC Decision Support Performance Indicator System(Tonga)
+- MEIDECC Decision Support Performance Indicator System (Tonga)
 
 ### Phase 3: Inter Island Connectivity (2026)
 - Inter island connectivity
