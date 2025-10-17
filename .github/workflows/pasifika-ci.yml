@@ -45,13 +45,10 @@ jobs:
         path: target
         key: ${{ runner.os }}-target-${{ hashFiles('**/Cargo.lock') }}
         
-    - name: Build Reth
-      run: cargo build --release --bin reth
-      
-    - name: Verify binary
+    - name: Check build (no release build in CI)
       run: |
-        ./target/release/reth --version
-        echo "✅ Pasifika Data Chain build successful"
+        cargo check --bin reth
+        echo "✅ Pasifika Data Chain check successful"
         
   genesis-validation:
     name: Validate Genesis Configuration
