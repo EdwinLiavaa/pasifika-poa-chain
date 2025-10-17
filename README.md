@@ -11,7 +11,7 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![CI](https://github.com/Pasifika-Web3-Tech-Hub/pasifika-poa-chain/actions/workflows/pasifika-ci.yml/badge.svg)](https://github.com/Pasifika-Web3-Tech-Hub/pasifika-poa-chain/actions/workflows/pasifika-ci.yml)
 
-![Pasifika Web3 Tech Hub](./pasifika.png)
+<img src="./pasifika.png" alt="Pasifika Web3 Tech Hub" width="400">
 
 📄 **Learn more about our vision and technical approach in the [Whitepaper](https://github.com/EdwinLiavaa/Whitepaper)**
 
