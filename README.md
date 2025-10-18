@@ -5,8 +5,6 @@
 **IMPORTANT: This is NOT about money or cryptocurrency**  
 **This IS about**: Records, data, verification, and governance - completely FREE
 
-> **⚠️ INTERNAL REPOSITORY**: Pasifika PoA Data Chain is specifically designed for **Private Consortium Blockchains**. This repository is internal and access is restricted to participating organizations. Interested parties should contact us at **info@pasifika.xyz** for collaboration opportunities.
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
