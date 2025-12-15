@@ -372,11 +372,6 @@ The Pasifika Web3 Tech Hub is a community driven initiative to bring Web3 techno
 - **Cultural preservation** - Blockchain based cultural heritage records
 - **Education** - Training the next generation of Pacific technologists
 - **Innovation** - Supporting Pacific entrepreneurs and developers
-
-**Website**: https://pasifika.xyz 
-**GitHub**: https://github.com/Pasifika-Web3-Tech-Hub 
-**Email**: info@pasifika.xyz 
-
 ---
 
 *Empowering communities through technology, honoring tradition through innovation*
