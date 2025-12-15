@@ -5,6 +5,11 @@
 
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+cd "$PROJECT_ROOT"
+
 echo "🌺 Pasifika PoA Chain - Quick Test"
 echo "=================================="
 echo ""
@@ -60,5 +65,5 @@ echo "    --http.port 8545 \\"
 echo "    --http.corsdomain \"*\""
 echo ""
 echo "📝 Or use the convenience script:"
-echo "  ./run-node.sh"
+echo "  ./scripts/run-node.sh"
 echo ""

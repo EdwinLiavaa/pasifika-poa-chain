@@ -12,7 +12,7 @@
   <img src="./pasifika.png" alt="Pasifika Web3 Tech Hub" width="500">
 </p>
 
-📄 **Learn more about our vision and technical approach in the [Whitepaper](https://github.com/EdwinLiavaa/Whitepaper)**
+**Learn more about our vision and technical approach in the [Whitepaper](https://github.com/EdwinLiavaa/Whitepaper)**
 
 ---
 
@@ -134,13 +134,13 @@ cd /home/user/Documents/pasifika-web3-tech-hub/pasifika-poa-chain
 cargo build --release --bin reth
 
 # Initialize Pasifika chain
-./quick-test.sh
+./scripts/quick-test.sh
 
 # Start node (Terminal 1)
-./run-node.sh
+./scripts/run-node.sh
 
 # Test (Terminal 2)
-./test-rpc.sh
+./scripts/test-rpc.sh
 ```
 
 ## Platform Architecture
@@ -358,7 +358,7 @@ This repository is **internal** and access is granted to participating consortiu
 - Learning more about private consortium blockchains
 
 **Please contact us:**
-- **Email**: info@pasifika.xyz
+- **Email**: edwin@pasifika.xyz
 - **Website**: https://pasifika.xyz
 
 We welcome inquiries from Pacific Island organizations committed to digital transformation while preserving community values and data sovereignty.

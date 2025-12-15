@@ -2,7 +2,12 @@
 
 # Start Pasifika PoA Node
 
-echo "🌺 Starting Pasifika PoA Node..."
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+cd "$PROJECT_ROOT"
+
+echo "Starting Pasifika PoA Node..."
 echo ""
 
 if [ ! -f "./target/release/reth" ]; then
@@ -11,13 +16,18 @@ if [ ! -f "./target/release/reth" ]; then
 fi
 
 if [ ! -d "./pasifika-test-data" ]; then
-    echo "❌ Chain not initialized. Please run: ./quick-test.sh"
+    echo "❌ Chain not initialized. Please run: ./scripts/quick-test.sh"
     exit 1
 fi
 
+# Automatically detect LAN IP address for display
+LAN_IP=$(./scripts/get-ip.sh)
+
 echo "Node Configuration:"
-echo "  - HTTP RPC: http://localhost:8545"
-echo "  - Chain ID: 999888"
+echo "  - Binding: 0.0.0.0:8545 (all interfaces)"
+echo "  - Local access: http://localhost:8545"
+echo "  - Network access: http://$LAN_IP:8545"
+echo "  - Chain ID: 676888 (MEIDECC Chain)"
 echo "  - Gas Fees: ZERO"
 echo "  - Dev Mode: Enabled (auto-mining)"
 echo ""
@@ -33,7 +43,7 @@ sleep 3
   --dev.block-time 1s \
   --http \
   --http.api all \
-  --http.addr 127.0.0.1 \
+  --http.addr 0.0.0.0 \
   --http.port 8545 \
   --http.corsdomain "*" \
   --gpo.blocks 1 \
