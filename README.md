@@ -103,46 +103,6 @@ Traditional blockchain consensus mechanisms (Proof-of-Work, Proof-of-Stake) are 
 - **Inclusive participation** - Everyone should be able to validate, not just the wealthy
 - **Zero barriers** - No need for expensive mining equipment or large token holdings
 
-## Getting Started
-
-### Prerequisites (Must Install First)
-
-Before building, install these required dependencies:
-
-**1. Rust 1.88.0 or later:**
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup update stable  # CRITICAL: Must be 1.88+
-```
-
-**2. Clang/LLVM (required for database engine):**
-```bash
-# Ubuntu/Debian
-sudo apt-get install -y build-essential clang libclang-dev pkg-config libssl-dev
-
-# macOS
-xcode-select --install
-```
-
-### Quick Setup
-
-```bash
-# Navigate to project root
-cd /home/user/Documents/pasifika-web3-tech-hub/pasifika-poa-chain
-
-# Build Reth (10-15 minutes first time)
-cargo build --release --bin reth
-
-# Initialize Pasifika chain
-./scripts/quick-test.sh
-
-# Start node (Terminal 1)
-./scripts/run-node.sh
-
-# Test (Terminal 2)
-./scripts/test-rpc.sh
-```
-
 ## Platform Architecture
 
 ```
@@ -172,26 +132,6 @@ Features:
 | **Smart Contracts** | Full Solidity/Vyper support |
 | **Network Type** | Private/Consortium |
 
-
-## Real-World Examples
-
-### Example 1: Community Land Registry
-
-```javascript
-// Track land ownership on the blockchain
-const landRegistry = await deployContract("LandRegistry");
-
-// Register land with customary ownership
-await landRegistry.registerLand({
-  plotId: "TONGA-001",
-  owner: "0x...",
-  area: "260.5 km²",
-  customaryRights: true,
-  village: "Tongatapu"
-});
-
-// Cost: 0 ETH (zero gas fees!)
-```
 ## Community & Collaboration
 
 The Pasifika Platform is built by and for Pacific communities. We welcome participation from:
@@ -210,80 +150,6 @@ We need help from people with diverse skills:
 - **Community Managers** - Build local adoption
 - **Documentation Writers** - Improve our guides
 
-## Building & Development
-
-### Prerequisites
-
-```bash
-# Install Rust (required)
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# Minimum Rust version: 1.88.0
-rustc --version
-```
-
-### Build from Source
-
-```bash
-# Clone the repository
-git clone https://github.com/pasifika-web3-tech-hub/pasifika-poa-chain
-cd pasifika-poa-chain/pasifika-poa
-
-# Build the platform
-cargo build --release
-
-# Run tests
-cargo test
-
-# Start a development node
-./scripts/start-node1.sh
-```
-
-### Running Tests
-
-```bash
-# Run all tests
-cargo test
-
-# Run with detailed output
-cargo test -- --nocapture
-
-# Test specific modules
-cargo test consensus
-cargo test p2p
-cargo test genesis
-```
-
-## Deployment Options
-
-### Local Development
-Perfect for learning and testing:
-```bash
-./scripts/start-node1.sh
-```
-
-### Community Network (3-5 Nodes)
-For village or organization deployment:
-```bash
-# Node 1 (Bootstrap)
-./scripts/start-node1.sh
-
-# Node 2 (on another machine)
-./scripts/start-node2.sh
-
-# Node 3 (on another machine)
-./scripts/start-node3.sh
-```
-
-### Docker Deployment
-For containerized environments:
-```bash
-# Single node
-docker-compose up node1
-
-# Full network
-docker-compose up
-```
 ## Security & Privacy
 
 The Pasifika Platform is designed with community privacy in mind:
@@ -293,24 +159,6 @@ The Pasifika Platform is designed with community privacy in mind:
 - **Encryption** - All network traffic is encrypted
 - **Access Control** - Fine-grained permissions for sensitive data
 - **Audit Trails** - Transparent, immutable transaction history
-
-## Roadmap
-
-### Phase 1: Foundation (Current)
-- Core PoA blockchain platform
-- Zero gas architecture
-- Automatic validator registration
-- Multi-node networking
-- Comprehensive documentation
-
-### Phase 2: Real-World Pilots (Q4 2025)
-- Utilities DePIN GIS (Federated States of Micronesia)
-- Tonga Postal Traciability Service (Tonga)
-- MEIDECC Decision Support Performance Indicator System (Tonga)
-
-### Phase 3: Inter Island Connectivity (2026)
-- Inter island connectivity
-- Integration with national systems
 
 ## Acknowledgements
 
